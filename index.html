@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outorga · Compete Minas · Coco Rock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#91A93E;
+    --verde-claro:#B0C660;
+    --verde-escuro:#6E832F;
+    --verde-fundo:#EEF2DE;
+    --gengibre:#D78600;
+    --gengibre-claro:#F3BD74;
+    --cacau:#99381A;
+    --cafe:#864C24;
+    --cafe-claro:#C8A48E;
+    --husk:#E4CCAA;
+    --coco:#D3C6B9;
+    --pulp:#E1D6B6;
+    --milk:#F5F2EC;
+    --milk-2:#EDE7DC;
+    --branco:#FFFFFF;
+    --tinta:#2E2418;
+    --tinta-2:#6B5944;
+    --tinta-3:#9C8970;
+    --linha:#E3DACB;
+    --sombra:0 4px 24px rgba(134,76,36,.07);
+    --sombra-fwd:0 14px 40px rgba(134,76,36,.10);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Mulish',-apple-system,sans-serif;
+    background:var(--milk);
+    color:var(--tinta);
+    font-size:14.5px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 88% -5%, rgba(176,198,96,.16) 0%, transparent 32%),
+      radial-gradient(circle at 0% 18%, rgba(228,204,170,.22) 0%, transparent 30%),
+      radial-gradient(circle at 50% 110%, rgba(211,198,185,.20) 0%, transparent 45%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:0 36px 110px;position:relative}
+
+  h1,h2,h3,h4,.font-disp{font-family:'Montserrat',sans-serif}
+
+  /* ===== TOP BAR ===== */
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:30px 0 24px;
+    margin-bottom:8px;
+  }
+  .brand{display:flex;align-items:center;gap:16px}
+  .brand svg{width:108px;height:auto;display:block}
+  .brand-tag{
+    font-size:10.5px;color:var(--verde-escuro);font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;
+    border-left:2px solid var(--verde);padding-left:16px;line-height:1.4;
+  }
+  .doc-pill{
+    display:flex;gap:10px;align-items:center;
+    background:var(--branco);
+    border:1px solid var(--linha);
+    border-radius:100px;
+    padding:8px 18px;
+    font-size:12px;color:var(--tinta-2);font-weight:600;
+    box-shadow:var(--sombra);
+  }
+  .doc-pill b{color:var(--verde-escuro);font-weight:800}
+  .doc-pill .sep{width:1px;height:14px;background:var(--linha)}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:linear-gradient(135deg,#9FB94B 0%, var(--verde) 48%, var(--verde-escuro) 100%);
+    border-radius:30px;
+    padding:64px 56px 60px;
+    overflow:hidden;
+    color:#fff;
+    margin-bottom:24px;
+    box-shadow:var(--sombra-fwd);
+  }
+  .hero .raio{
+    position:absolute;
+    right:-90px;top:50%;transform:translateY(-50%) rotate(8deg);
+    width:560px;height:auto;
+    opacity:.13;
+    pointer-events:none;
+  }
+  .hero .raio path{fill:#fff}
+  .hero-eyebrow{
+    display:inline-block;
+    background:rgba(255,255,255,.18);
+    backdrop-filter:blur(4px);
+    border:1px solid rgba(255,255,255,.3);
+    padding:7px 16px;border-radius:100px;
+    font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    margin-bottom:26px;
+  }
+  .hero h1{
+    font-size:50px;font-weight:800;line-height:1.06;letter-spacing:-.02em;
+    max-width:780px;margin-bottom:22px;
+    text-shadow:0 2px 16px rgba(60,40,15,.12);
+  }
+  .hero h1 .lt{color:var(--pulp);font-weight:600}
+  .hero .lead{
+    font-size:16px;max-width:620px;line-height:1.6;font-weight:400;
+    color:rgba(255,255,255,.94);position:relative;
+  }
+  .hero .lead b{font-weight:800;color:#fff}
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;position:relative;
+  }
+  .hm{
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:14px;
+    padding:14px 20px;backdrop-filter:blur(6px);
+  }
+  .hm .k{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.8;font-weight:700;margin-bottom:5px}
+  .hm .v{font-family:'Montserrat';font-size:15px;font-weight:700}
+  .hm.alert .v{color:var(--gengibre-claro)}
+
+  /* ===== SECTION ===== */
+  section{margin-top:72px;position:relative}
+  .s-head{display:flex;align-items:center;gap:16px;margin-bottom:30px}
+  .s-mark{
+    width:34px;height:34px;flex-shrink:0;
+    background:var(--verde-fundo);
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .s-mark svg{width:18px;height:18px}
+  .s-mark svg path{fill:var(--verde)}
+  .s-num{
+    font-family:'Montserrat';font-size:12px;font-weight:800;color:var(--verde);
+    letter-spacing:.05em;
+  }
+  .s-head h2{font-size:25px;font-weight:800;color:var(--tinta);letter-spacing:-.015em;flex:1;line-height:1.1}
+  .s-head .s-sub{font-size:12.5px;color:var(--tinta-3);font-weight:600;text-align:right;max-width:240px}
+
+  /* ===== KPIs ===== */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .kpi{
+    background:var(--branco);
+    border:1px solid var(--linha);
+    border-radius:20px;
+    padding:26px 24px 24px;
+    position:relative;overflow:hidden;
+    box-shadow:var(--sombra);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .kpi:hover{transform:translateY(-4px);box-shadow:var(--sombra-fwd)}
+  .kpi .cap{
+    width:38px;height:5px;border-radius:100px;background:var(--verde);margin-bottom:18px;
+  }
+  .kpi.g .cap{background:var(--gengibre)}
+  .kpi.c .cap{background:var(--cacau)}
+  .kpi.b .cap{background:var(--cafe)}
+  .kpi .lbl{font-size:10.5px;color:var(--tinta-3);letter-spacing:.1em;text-transform:uppercase;font-weight:800;margin-bottom:12px}
+  .kpi .val{font-family:'Montserrat';font-size:33px;font-weight:800;color:var(--tinta);line-height:1;letter-spacing:-.02em}
+  .kpi .val .u{font-size:15px;color:var(--tinta-3);font-weight:700;margin-right:3px}
+  .kpi .desc{margin-top:11px;font-size:12px;color:var(--tinta-2);font-weight:500;line-height:1.4}
+  .kpi.c .val{color:var(--cacau);font-size:21px}
+  .kpi.green-v .val{color:var(--verde-escuro)}
+
+  /* ===== CARD surfaces ===== */
+  .cols-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .cols-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .card{
+    background:var(--branco);border:1px solid var(--linha);border-radius:20px;
+    padding:28px;box-shadow:var(--sombra);
+  }
+  .card.tone{background:linear-gradient(160deg,#fff 0%, var(--milk) 130%)}
+  .block-title{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:9px}
+  .block-title::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--verde)}
+  .block-title.green{color:var(--verde-escuro)}
+  .block-title.green::before{background:var(--verde)}
+  .block-title.orange{color:var(--gengibre)}
+  .block-title.orange::before{background:var(--gengibre)}
+  .block-title.brown{color:var(--cafe)}
+  .block-title.brown::before{background:var(--cafe)}
+
+  dl.def{font-size:13px}
+  dl.def > div{display:grid;grid-template-columns:135px 1fr;padding:9px 0;border-bottom:1px solid var(--milk-2);gap:14px}
+  dl.def > div:last-child{border-bottom:none}
+  dl.def dt{color:var(--tinta-3);font-size:12px;font-weight:600}
+  dl.def dd{color:var(--tinta);font-weight:700}
+
+  /* ===== BARS ===== */
+  .bars{background:var(--branco);border:1px solid var(--linha);border-radius:20px;padding:14px 28px;box-shadow:var(--sombra)}
+  .bar{display:grid;grid-template-columns:1fr 230px 130px;align-items:center;gap:22px;padding:17px 0;border-bottom:1px solid var(--milk-2)}
+  .bar:last-child{border-bottom:none}
+  .bar-meta strong{display:block;color:var(--tinta);font-weight:800;font-size:13.5px;margin-bottom:2px}
+  .bar-meta small{color:var(--tinta-3);font-size:11.5px;font-weight:500}
+  .bar-track{height:9px;background:var(--milk-2);border-radius:100px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--verde),var(--verde-claro))}
+  .bar-val{text-align:right;font-family:'Montserrat';font-size:18px;font-weight:800;color:var(--tinta);letter-spacing:-.01em}
+  .bar-val small{display:block;font-size:11px;color:var(--verde-escuro);font-family:'Mulish';font-weight:700;margin-top:2px}
+
+  /* ===== STACKED ===== */
+  .stacked{display:flex;height:54px;border-radius:14px;overflow:hidden;margin-bottom:22px;box-shadow:var(--sombra)}
+  .stacked > div{display:flex;align-items:center;padding:0 20px;color:#fff;font-size:13px;font-weight:800;font-family:'Montserrat'}
+  .stacked-leg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .sl{background:var(--branco);border:1px solid var(--linha);border-radius:16px;padding:20px 22px;box-shadow:var(--sombra)}
+  .sl .top{display:flex;align-items:center;gap:9px;margin-bottom:12px}
+  .sl .dot{width:11px;height:11px;border-radius:4px}
+  .sl .lbl{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--tinta-2)}
+  .sl .v{font-family:'Montserrat';font-size:25px;font-weight:800;color:var(--tinta);letter-spacing:-.01em}
+  .sl .desc{font-size:12px;color:var(--tinta-2);margin-top:8px;line-height:1.45;font-weight:500}
+
+  /* ===== METAS ===== */
+  .metas{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .meta{background:var(--branco);border:1px solid var(--linha);border-radius:20px;padding:28px;box-shadow:var(--sombra);position:relative;overflow:hidden}
+  .meta::after{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:var(--verde)}
+  .meta.orange::after{background:var(--gengibre)}
+  .meta.brown::after{background:var(--cafe)}
+  .meta-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--verde-fundo);color:var(--verde-escuro);
+    font-family:'Montserrat';font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    padding:6px 13px;border-radius:100px;margin-bottom:16px;
+  }
+  .meta.orange .meta-badge{background:#FBEFD9;color:#9A6200}
+  .meta.brown .meta-badge{background:#F1E5DA;color:var(--cafe)}
+  .meta h3{font-size:19px;font-weight:800;color:var(--tinta);line-height:1.18;letter-spacing:-.01em;margin-bottom:13px}
+  .meta p{font-size:12.5px;color:var(--tinta-2);margin-bottom:18px;line-height:1.55;font-weight:500}
+  .meta ul{list-style:none;font-size:12.5px}
+  .meta ul li{padding:11px 0;border-top:1px solid var(--milk-2);display:grid;grid-template-columns:34px 1fr auto;gap:8px;align-items:center;color:var(--tinta-2);font-weight:600}
+  .meta ul li code{font-family:'Montserrat';color:var(--verde-escuro);font-size:11px;font-weight:800}
+  .meta.orange ul li code{color:#9A6200}
+  .meta.brown ul li code{color:var(--cafe)}
+  .meta ul li em{font-style:normal;color:var(--tinta-3);font-size:10.5px;font-weight:700;background:var(--milk);padding:3px 8px;border-radius:6px}
+
+  /* ===== GANTT ===== */
+  .gantt{background:var(--branco);border:1px solid var(--linha);border-radius:20px;padding:28px;box-shadow:var(--sombra)}
+  .gantt-head{display:grid;grid-template-columns:230px repeat(12,1fr);gap:5px;padding-bottom:12px;margin-bottom:10px;border-bottom:1px solid var(--linha);font-size:10px;color:var(--tinta-3);font-weight:800;letter-spacing:.06em}
+  .gantt-head span{text-align:center}
+  .gantt-head .e{text-align:left}
+  .gantt-row{display:grid;grid-template-columns:230px repeat(12,1fr);gap:5px;align-items:center;padding:9px 0}
+  .gantt-etapa{color:var(--tinta);font-size:12.5px;font-weight:600}
+  .gantt-etapa code{font-family:'Montserrat';color:var(--verde-escuro);font-size:11px;font-weight:800;margin-right:9px}
+  .gantt-track{grid-column:2 / span 12;position:relative;height:13px;background:var(--milk-2);border-radius:100px}
+  .gantt-fill{position:absolute;top:0;bottom:0;border-radius:100px;background:linear-gradient(90deg,var(--verde),var(--verde-claro))}
+  .gantt-fill.g{background:linear-gradient(90deg,var(--gengibre),var(--gengibre-claro))}
+  .gantt-fill.c{background:linear-gradient(90deg,var(--cafe),var(--cafe-claro))}
+  .gantt-legend{display:flex;gap:26px;margin-top:20px;padding-top:16px;border-top:1px solid var(--milk-2);font-size:11.5px;color:var(--tinta-2);font-weight:600}
+  .gantt-legend span{display:flex;align-items:center;gap:8px}
+  .gantt-legend i{width:13px;height:13px;border-radius:5px;display:inline-block}
+
+  /* ===== DEVERES ===== */
+  .dever{background:var(--branco);border:1px solid var(--linha);border-radius:20px;padding:30px;box-shadow:var(--sombra);position:relative;overflow:hidden}
+  .dever::after{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:var(--verde)}
+  .dever.org::after{background:var(--gengibre)}
+  .dever .who{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--tinta-3);margin-bottom:5px}
+  .dever h4{font-size:22px;font-weight:800;color:var(--tinta);margin-bottom:20px;letter-spacing:-.01em}
+  .dever ol{list-style:none;counter-reset:d}
+  .dever ol li{counter-increment:d;padding:13px 0 13px 40px;border-top:1px solid var(--milk-2);font-size:13px;color:var(--tinta-2);position:relative;line-height:1.5;font-weight:500}
+  .dever ol li::before{
+    content:counter(d,decimal-leading-zero);
+    position:absolute;left:0;top:12px;width:26px;height:26px;
+    background:var(--verde-fundo);color:var(--verde-escuro);
+    border-radius:8px;display:flex;align-items:center;justify-content:center;
+    font-family:'Montserrat';font-size:10px;font-weight:800;
+  }
+  .dever.org ol li::before{background:#FBEFD9;color:#9A6200}
+  .dever ol li strong{color:var(--tinta);font-weight:800}
+
+  /* ===== EQUIPE ===== */
+  .team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .person{background:var(--branco);border:1px solid var(--linha);border-radius:20px;padding:28px;box-shadow:var(--sombra)}
+  .person .ava{
+    width:54px;height:54px;border-radius:16px;
+    background:linear-gradient(135deg,var(--verde),var(--verde-claro));
+    color:#fff;display:flex;align-items:center;justify-content:center;
+    font-family:'Montserrat';font-size:24px;font-weight:800;margin-bottom:16px;
+  }
+  .person.g .ava{background:linear-gradient(135deg,var(--gengibre),var(--gengibre-claro))}
+  .person.b .ava{background:linear-gradient(135deg,var(--cafe),var(--cafe-claro))}
+  .person .role{font-size:10px;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--verde-escuro);margin-bottom:6px}
+  .person.g .role{color:var(--gengibre)}
+  .person.b .role{color:var(--cafe)}
+  .person h4{font-size:19px;font-weight:800;color:var(--tinta);margin-bottom:13px;letter-spacing:-.01em}
+  .person p{font-size:12.5px;color:var(--tinta-2);line-height:1.55;font-weight:500}
+
+  /* ===== RISCOS ===== */
+  .risks{display:flex;flex-direction:column;gap:12px}
+  .risk{background:var(--branco);border:1px solid var(--linha);border-left:6px solid var(--gengibre);border-radius:16px;padding:22px 26px;display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:start;box-shadow:var(--sombra)}
+  .risk.critico{border-left-color:var(--cacau)}
+  .risk.ok{border-left-color:var(--verde)}
+  .risk-tag{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;padding:6px 12px;border-radius:100px;background:#FBEFD9;color:#9A6200;height:fit-content;min-width:118px;text-align:center;white-space:nowrap}
+  .risk.critico .risk-tag{background:#F4DDD4;color:var(--cacau)}
+  .risk.ok .risk-tag{background:var(--verde-fundo);color:var(--verde-escuro)}
+  .risk-body h4{font-size:17px;font-weight:800;color:var(--tinta);margin-bottom:6px;letter-spacing:-.01em}
+  .risk-body p{font-size:13px;color:var(--tinta-2);line-height:1.55;font-weight:500}
+  .risk-body p strong{color:var(--tinta);font-weight:800}
+
+  /* ===== DECISÕES ===== */
+  .decisions{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .dec{background:linear-gradient(160deg,#fff 0%,var(--milk) 140%);border:1px solid var(--linha);border-radius:20px;padding:28px;box-shadow:var(--sombra);position:relative}
+  .dec-num{
+    position:absolute;top:24px;right:26px;
+    font-family:'Montserrat';font-size:34px;font-weight:900;
+    color:var(--verde);opacity:.18;line-height:1;
+  }
+  .dec h4{font-size:18px;font-weight:800;color:var(--tinta);margin-bottom:10px;letter-spacing:-.01em;max-width:80%;line-height:1.2}
+  .dec p{font-size:12.5px;color:var(--tinta-2);line-height:1.55;font-weight:500}
+
+  /* ===== FOOTER ===== */
+  footer{margin-top:80px;background:var(--verde-escuro);border-radius:24px;padding:36px 40px;color:#fff;display:flex;justify-content:space-between;align-items:center;position:relative;overflow:hidden}
+  footer .raio{position:absolute;right:-40px;bottom:-80px;width:280px;opacity:.1}
+  footer .raio path{fill:#fff}
+  footer .fl{position:relative}
+  footer .fl .big{font-family:'Montserrat';font-size:20px;font-weight:800;letter-spacing:.02em}
+  footer .fl .sm{font-size:12px;opacity:.82;margin-top:3px;font-weight:500}
+  footer .fr{text-align:right;font-size:11px;opacity:.85;position:relative;line-height:1.6;font-weight:500}
+
+  @media (max-width:980px){
+    .wrap{padding:0 18px 60px}
+    .hero{padding:40px 28px}
+    .hero h1{font-size:32px}
+    .kpis,.metas,.team,.decisions,.cols-2,.cols-3,.stacked-leg{grid-template-columns:1fr}
+    .bar{grid-template-columns:1fr;gap:10px}.bar-val{text-align:left}
+    .gantt-head,.gantt-row{grid-template-columns:1fr}.gantt-track{grid-column:1}
+    .topbar{flex-direction:column;align-items:flex-start;gap:14px}
+    footer{flex-direction:column;gap:18px;align-items:flex-start}footer .fr{text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== GATE DE SENHA ===== -->
+<div id="gate" style="position:fixed;inset:0;z-index:9999;background:linear-gradient(155deg,#6E832F 0%,#91A93E 55%,#B0C660 100%);display:grid;place-items:center;padding:24px;font-family:'Mulish',system-ui,sans-serif">
+  <div id="gateCard" style="width:100%;max-width:420px;background:#fff;border-radius:24px;padding:44px 34px 38px;box-shadow:0 24px 80px rgba(30,20,10,.35);text-align:center">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1347.89 1712.66" style="width:56px;height:56px;margin-bottom:16px"><path fill="#91A93E" d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg>
+    <div style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#6E832F;font-weight:800;margin-bottom:8px">Acesso restrito</div>
+    <h2 style="font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:#2E2418;margin-bottom:8px;letter-spacing:-.01em">Outorga · Compete Minas</h2>
+    <p style="font-size:13px;color:#6B5944;margin-bottom:22px;line-height:1.5">Dashboard interno da Coco Rock<br>referente ao processo APQ-06390-25</p>
+    <input id="gatePass" type="password" placeholder="Senha" autocomplete="off"
+      style="width:100%;padding:14px 16px;border:1.5px solid #E3DACB;border-radius:14px;font-size:15px;outline:none;margin-bottom:12px;text-align:center;font-family:inherit;color:#2E2418"
+      onkeydown="if(event.key==='Enter')gateTry()">
+    <button onclick="gateTry()"
+      style="width:100%;padding:14px;border:none;border-radius:14px;background:#91A93E;color:#fff;font-size:15px;font-weight:800;cursor:pointer;letter-spacing:.02em;font-family:'Montserrat',sans-serif;transition:background .15s"
+      onmouseover="this.style.background='#6E832F'" onmouseout="this.style.background='#91A93E'">Entrar</button>
+    <div id="gateErr" style="font-size:12.5px;color:#99381A;font-weight:700;margin-top:14px;min-height:16px"></div>
+  </div>
+</div>
+<script>
+function sha256(a){function r(a,b){return a>>>b|a<<32-b}var b,c,d=Math.pow,e=d(2,32),f="",g=[],h=8*a.length,i=sha256.h=sha256.h||[],j=sha256.k=sha256.k||[],k=j.length,l={};for(b=2;k<64;b++)if(!l[b]){for(c=0;c<313;c+=b)l[c]=b;i[k]=d(b,.5)*e|0,j[k++]=d(b,1/3)*e|0}for(a+="\x80";a.length%64-56;)a+="\x00";for(b=0;b<a.length;b++){if(c=a.charCodeAt(b),c>>8)return;g[b>>2]|=c<<(3-b)%4*8}for(g[g.length]=h/e|0,g[g.length]=h,c=0;c<g.length;){var m=g.slice(c,c+=16),n=i;for(i=i.slice(0,8),b=0;b<64;b++){var o=m[b-15],p=m[b-2],q=i[0],s=i[4],t=i[7]+(r(s,6)^r(s,11)^r(s,25))+(s&i[5]^~s&i[6])+j[b]+(m[b]=b<16?m[b]:m[b-16]+(r(o,7)^r(o,18)^o>>>3)+m[b-7]+(r(p,17)^r(p,19)^p>>>10)|0),u=(r(q,2)^r(q,13)^r(q,22))+(q&i[1]^q&i[2]^i[1]&i[2]);i=[t+u|0].concat(i),i[4]=i[4]+t|0}for(b=0;b<8;b++)i[b]=i[b]+n[b]|0}for(b=0;b<8;b++)for(c=3;c+1;c--){var v=i[b]>>8*c&255;f+=(v<16?0:"")+v.toString(16)}return f}
+var GATE_HASH="7348b0bce83e0c06f4172517040453cdecc02df81458b0bdf6100b4e56632bd4";
+function gateOpen(){var g=document.getElementById('gate');g.style.transition='opacity .35s';g.style.opacity='0';setTimeout(function(){g.style.display='none'},360);try{sessionStorage.setItem('cr_compete_ok','1')}catch(e){}}
+function gateTry(){var v=document.getElementById('gatePass').value;if(sha256(v)===GATE_HASH){gateOpen()}else{var e=document.getElementById('gateErr');e.textContent='Senha incorreta. Tente novamente.';var c=document.getElementById('gateCard');c.animate([{transform:'translateX(0)'},{transform:'translateX(-8px)'},{transform:'translateX(8px)'},{transform:'translateX(0)'}],{duration:260});document.getElementById('gatePass').value=''}}
+try{if(sessionStorage.getItem('cr_compete_ok')==='1'){document.getElementById('gate').style.display='none'}}catch(e){}
+window.addEventListener('load',function(){var p=document.getElementById('gatePass');if(p)p.focus()});
+</script>
+
+<div class="wrap">
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="brand">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 792 612">
+        <style>.s2{fill:#91A93E}</style>
+        <g>
+          <path class="s2" d="M592.4,314.2l-21.2-17.4l-44.6,56.1v-55.3c-10.5-2.9-19.9-8.3-27.7-15.4v150l52.1-65.4l30,37.3l21.1-17.6 l-33.5-42L592.4,314.2z"/>
+          <path class="s2" d="M244.8,207.5c-13.8,0-24.7,11.1-24.7,24.9s10.9,24.7,24.7,24.7c6.8,0,12.6-2.5,17.9-7.5l19.1,20.1 c-9.7,9.5-22.7,15.4-37,15.4c-29.5,0-53.4-23.8-53.4-53.2c0-29.5,23.9-53.4,53.4-53.4c14.7,0,28,6,37.5,15.6L263.1,214 C257.6,210.3,250.8,207.5,244.8,207.5z"/>
+          <path class="s2" d="M335.3,179c-29.5,0-53.4,23.8-53.4,53.4c0,29.5,23.8,53.2,53.4,53.2c29.6,0,53.4-23.8,53.4-53.2 C388.7,202.8,364.9,179,335.3,179z M335.3,257.1c-13.6,0-24.7-11.1-24.7-24.7s11.1-24.9,24.7-24.9c13.7,0,24.7,11.1,24.7,24.9 S349,257.1,335.3,257.1z"/>
+          <path class="s2" d="M474.2,232.4c0-29.5-23.8-53.4-53.4-53.4c-29.5,0-53.4,23.9-53.4,53.4c0,29.5,23.9,53.2,53.4,53.2 C450.4,285.6,474.2,261.8,474.2,232.4z M420.7,257.1c-13.6,0-24.7-11.1-24.7-24.7s11.1-24.9,24.7-24.9c13.6,0,24.7,11.1,24.7,24.9 S434.3,257.1,420.7,257.1z"/>
+          <path class="s2" d="M555.3,232.4v-50.7h-28.2v15.1c-9.6-10.4-23.3-16.9-38.5-16.9V211c8.4,0,16.1,3.5,21.6,9.1 c5.5,5.5,8.9,13.1,8.9,21.6c0,8.5-3.4,16.1-8.9,21.7c-5.5,5.5-13.2,9-21.6,9v31.1c15.2,0,28.9-6.4,38.5-16.7v15.5L555.3,232.4z"/>
+          <path class="s2" d="M598,288.4v-152h-27.7v152c2.6,15.8,14.7,28.4,30.2,32V288c-1-0.2-1.7-0.4-2.5-0.8V288.4z"/>
+          <path class="s2" d="M624.2,294.6c-3.6-0.4-7-1.3-10.1-2.5v33.8c3.2,1.5,6.6,2.5,10.1,2.9V294.6z"/>
+        </g>
+      </svg>
+      <span class="brand-tag">Plano de Trabalho<br>FAPEMIG · Compete Minas</span>
+    </div>
+    <div class="doc-pill">
+      <b>APQ-06390-25</b><span class="sep"></span>SEI 2070.01.0004968/2025-07
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <svg class="raio" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg>
+    <span class="hero-eyebrow">Termo de Outorga · Linha II Empresarial</span>
+    <h1>Produtos naturais à base de coco <span class="lt">— estabilidade sensorial &amp; vida de prateleira</span></h1>
+    <p class="lead">Outorga aprovada em <b>07/11/2025</b> pelo Departamento de Parcerias Empresariais da FAPEMIG — <b>R$ 240.880</b> em 12 meses para resolver dois desafios técnicos centrais: a crocância dos chips e a estabilidade do creme de coco.</p>
+    <div class="hero-meta">
+      <div class="hm"><div class="k">Edital</div><div class="v">Nº 8L2/2025</div></div>
+      <div class="hm"><div class="k">Categoria</div><div class="v">A · até R$ 4,8 mi</div></div>
+      <div class="hm"><div class="k">Vigência</div><div class="v">02/01/26 → 01/01/27</div></div>
+      <div class="hm"><div class="k">TRL</div><div class="v">Chips 8→9 · Creme 7→9</div></div>
+      <div class="hm alert"><div class="k">Status</div><div class="v">Pendente formalização</div></div>
+    </div>
+  </div>
+
+  <!-- 01 VISÃO GERAL -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">01</span>
+      <h2>Visão geral</h2>
+      <span class="s-sub">Quatro números para abrir a reunião</span>
+    </div>
+    <div class="kpis">
+      <div class="kpi">
+        <div class="cap"></div>
+        <div class="lbl">Verba aprovada</div>
+        <div class="val"><span class="u">R$</span>240.880</div>
+        <div class="desc">100% do solicitado · sem glosa</div>
+      </div>
+      <div class="kpi green-v">
+        <div class="cap"></div>
+        <div class="lbl">FAPEMIG concedente</div>
+        <div class="val"><span class="u">R$</span>199.880</div>
+        <div class="desc">83% · desembolsado pela outorgante</div>
+      </div>
+      <div class="kpi b">
+        <div class="cap"></div>
+        <div class="lbl">Contrapartida Coco Rock</div>
+        <div class="val"><span class="u">R$</span>41.000</div>
+        <div class="desc">17% · R$ 26 k financeira + R$ 15 k econômica</div>
+      </div>
+      <div class="kpi c">
+        <div class="cap"></div>
+        <div class="lbl">Bloqueio atual</div>
+        <div class="val">Outorga não assinada</div>
+        <div class="desc">Ofício DPE 287/2025 · prazo 30 dias úteis</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 PARTES -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">02</span>
+      <h2>Partes &amp; enquadramento</h2>
+    </div>
+    <div class="cols-3">
+      <div class="card tone">
+        <div class="block-title green">Outorgada</div>
+        <dl class="def">
+          <div><dt>Razão social</dt><dd>Coco Rock Ind. de Alimentos LTDA</dd></div>
+          <div><dt>Qualificação</dt><dd>Empresa · ME/EPP</dd></div>
+          <div><dt>Coordenador</dt><dd>Pedro Pinheiro Antunes</dd></div>
+          <div><dt>CPF</dt><dd>104.067.686-33</dd></div>
+          <div><dt>Endereço fabril</dt><dd>R. Pageu, 137 · Concórdia · BH</dd></div>
+        </dl>
+      </div>
+      <div class="card tone">
+        <div class="block-title orange">Outorgante</div>
+        <dl class="def">
+          <div><dt>Órgão</dt><dd>FAPEMIG</dd></div>
+          <div><dt>Departamento</dt><dd>Parcerias Empresariais</dd></div>
+          <div><dt>Chefe DPE</dt><dd>Débora C. P. Ribeiro</dd></div>
+          <div><dt>Programa</dt><dd>Compete Minas · Chamada 08/2025</dd></div>
+          <div><dt>Linha</dt><dd>II · Empresarial</dd></div>
+        </dl>
+      </div>
+      <div class="card tone">
+        <div class="block-title brown">Enquadramento técnico</div>
+        <dl class="def">
+          <div><dt>Área</dt><dd>Ciência e Tecnologia de Alimentos</dd></div>
+          <div><dt>Sub-área</dt><dd>Tec. Alim. Dietéticos / Nutricionais</dd></div>
+          <div><dt>Prioritária</dt><dd>Agricultura sustentável</dd></div>
+          <div><dt>PLAC-MG</dt><dd>Segurança alimentar e nutricional</dd></div>
+          <div><dt>TRL final</dt><dd>9 · industrial validado</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 VERBA -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">03</span>
+      <h2>Verba por categoria</h2>
+      <span class="s-sub">Sete rubricas · R$ 240.880,00</span>
+    </div>
+    <div class="bars">
+      <div class="bar">
+        <div class="bar-meta"><strong>Outros Serviços de Terceiros</strong><small>Equipe técnica · consultoria · feira · utilidades</small></div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        <div class="bar-val">R$ 113.000<small>46,9%</small></div>
+      </div>
+      <div class="bar">
+        <div class="bar-meta"><strong>Avaliação de Desempenho</strong><small>16 ensaios físico-químicos + certificações + registro de marca</small></div>
+        <div class="bar-track"><div class="bar-fill" style="width:37.2%"></div></div>
+        <div class="bar-val">R$ 42.000<small>17,4%</small></div>
+      </div>
+      <div class="bar">
+        <div class="bar-meta"><strong>Equipamentos &amp; Materiais Permanentes</strong><small>Sensores · automação térmica · bancada laboratorial — capital</small></div>
+        <div class="bar-track"><div class="bar-fill" style="width:26.5%"></div></div>
+        <div class="bar-val">R$ 30.000<small>12,5%</small></div>
+      </div>
+      <div class="bar">
+        <div class="bar-meta"><strong>Manutenção de Equipamentos</strong><small>Engenharia de processo · isolamento térmico passivo</small></div>
+        <div class="bar-track"><div class="bar-fill" style="width:26.5%"></div></div>
+        <div class="bar-val">R$ 30.000<small>12,5%</small></div>
+      </div>
+      <div class="bar">
+        <div class="bar-meta"><strong>Reformas &amp; Adequações</strong><small>Adequação de infra laboratorial existente</small></div>
+        <div class="bar-track"><div class="bar-fill" style="width:14.2%"></div></div>
+        <div class="bar-val">R$ 16.000<small>6,6%</small></div>
+      </div>
+      <div class="bar">
+        <div class="bar-meta"><strong>Passagens Aéreas Nacionais</strong><small>2 trechos · visitas técnicas + congressos</small></div>
+        <div class="bar-track"><div class="bar-fill" style="width:7.1%"></div></div>
+        <div class="bar-val">R$ 8.000<small>3,3%</small></div>
+      </div>
+      <div class="bar">
+        <div class="bar-meta"><strong>Diárias Nacionais</strong><small>4 diárias técnicas · campo</small></div>
+        <div class="bar-track"><div class="bar-fill" style="width:1.7%"></div></div>
+        <div class="bar-val">R$ 1.880<small>0,8%</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 ORIGEM -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">04</span>
+      <h2>Origem dos recursos</h2>
+      <span class="s-sub">De onde vem cada real</span>
+    </div>
+    <div class="stacked">
+      <div style="width:83%;background:linear-gradient(90deg,var(--verde),var(--verde-claro))">FAPEMIG · 83%</div>
+      <div style="width:10.8%;background:var(--gengibre)">10,8%</div>
+      <div style="width:6.2%;background:var(--cafe)">6,2%</div>
+    </div>
+    <div class="stacked-leg">
+      <div class="sl">
+        <div class="top"><span class="dot" style="background:var(--verde)"></span><span class="lbl">Concedente FAPEMIG</span></div>
+        <div class="v">R$ 199.880</div>
+        <div class="desc">Custeio + capital · desembolsado pela outorgante conforme cronograma físico-financeiro.</div>
+      </div>
+      <div class="sl">
+        <div class="top"><span class="dot" style="background:var(--gengibre)"></span><span class="lbl">Contrapartida financeira</span></div>
+        <div class="v">R$ 26.000</div>
+        <div class="desc">Aporte em caixa da Coco Rock · vinculado à participação em feira nacional (etapa 3.2).</div>
+      </div>
+      <div class="sl">
+        <div class="top"><span class="dot" style="background:var(--cafe)"></span><span class="lbl">Contrapartida econômica</span></div>
+        <div class="v">R$ 15.000</div>
+        <div class="desc">Valoração de estrutura própria · energia, água e materiais já existentes na fábrica.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 METAS -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">05</span>
+      <h2>Metas pactuadas</h2>
+      <span class="s-sub">Três metas · seis etapas · onze entregáveis</span>
+    </div>
+    <div class="metas">
+      <div class="meta">
+        <span class="meta-badge">Meta 01</span>
+        <h3>Creme de Coco estável</h3>
+        <p>Eliminar separação de óleo sob variação térmica preservando textura indulgente — sem aditivos artificiais.</p>
+        <ul>
+          <li><code>1.1</code><span>Relatório técnico de diagnóstico</span><em>M1–2</em></li>
+          <li><code>1.2</code><span>Protótipo funcional de creme estável</span><em>M2–5</em></li>
+        </ul>
+      </div>
+      <div class="meta orange">
+        <span class="meta-badge">Meta 02</span>
+        <h3>Chips com shelf life ampliado</h3>
+        <p>Aumentar vida útil preservando crocância — mantendo rótulo limpo, sustentabilidade e rastreabilidade.</p>
+        <ul>
+          <li><code>2.1</code><span>Estudo de shelf life chips coco</span><em>M1–3</em></li>
+          <li><code>2.2</code><span>Lotes piloto de chips aprimorados</span><em>M3–6</em></li>
+        </ul>
+      </div>
+      <div class="meta brown">
+        <span class="meta-badge">Meta 03</span>
+        <h3>Consolidação industrial</h3>
+        <p>POPs, validação em escala piloto e plano de escalabilidade — fechamento técnico-financeiro do projeto.</p>
+        <ul>
+          <li><code>3.1</code><span>Manuais, fichas e protocolos</span><em>M6–8</em></li>
+          <li><code>3.2</code><span>Validação final · pitch · relatório</span><em>M8–12</em></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 CRONOGRAMA -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">06</span>
+      <h2>Cronograma de execução</h2>
+      <span class="s-sub">12 meses · jan/2026 → jan/2027</span>
+    </div>
+    <div class="gantt">
+      <div class="gantt-head">
+        <span class="e">Etapa</span>
+        <span>M1</span><span>M2</span><span>M3</span><span>M4</span><span>M5</span><span>M6</span>
+        <span>M7</span><span>M8</span><span>M9</span><span>M10</span><span>M11</span><span>M12</span>
+      </div>
+      <div class="gantt-row"><div class="gantt-etapa"><code>1.1</code>Diagnóstico Creme</div><div class="gantt-track"><div class="gantt-fill" style="left:0;width:16.67%"></div></div></div>
+      <div class="gantt-row"><div class="gantt-etapa"><code>1.2</code>Desenvolvimento Creme</div><div class="gantt-track"><div class="gantt-fill" style="left:8.33%;width:33.34%"></div></div></div>
+      <div class="gantt-row"><div class="gantt-etapa"><code>2.1</code>Análise shelf life Chips</div><div class="gantt-track"><div class="gantt-fill g" style="left:0;width:25%"></div></div></div>
+      <div class="gantt-row"><div class="gantt-etapa"><code>2.2</code>Validação processo Chips</div><div class="gantt-track"><div class="gantt-fill g" style="left:16.67%;width:33.34%"></div></div></div>
+      <div class="gantt-row"><div class="gantt-etapa"><code>3.1</code>POPs e protocolos</div><div class="gantt-track"><div class="gantt-fill c" style="left:41.67%;width:25%"></div></div></div>
+      <div class="gantt-row"><div class="gantt-etapa"><code>3.2</code>Validação final &amp; escala</div><div class="gantt-track"><div class="gantt-fill c" style="left:58.33%;width:41.67%"></div></div></div>
+      <div class="gantt-legend">
+        <span><i style="background:var(--verde)"></i>Meta 1 · Creme</span>
+        <span><i style="background:var(--gengibre)"></i>Meta 2 · Chips</span>
+        <span><i style="background:var(--cafe)"></i>Meta 3 · Consolidação</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 07 DEVERES -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">07</span>
+      <h2>Poderes &amp; deveres</h2>
+      <span class="s-sub">O que cada parte deve fazer</span>
+    </div>
+    <div class="cols-2">
+      <div class="dever">
+        <div class="who">Outorgada</div>
+        <h4>Coco Rock</h4>
+        <ol>
+          <li><strong>Executar integralmente</strong> o plano de trabalho aprovado, sem desvio de finalidade.</li>
+          <li><strong>Aportar contrapartida</strong> de R$ 41.000 (financeira + econômica), com comprovação na prestação de contas.</li>
+          <li><strong>Designar Fiscal</strong> da execução (Anexo X) e assinar eletronicamente via SEI/MG.</li>
+          <li><strong>Manter regularidade fiscal e cadastral</strong> (FAPEMIG + CAGEF) durante toda a vigência.</li>
+          <li><strong>Entregar 11 produtos pactuados</strong> — 2 protótipos, 5 relatórios, 3 metodologias, 1 pitch e 1 lote piloto.</li>
+          <li><strong>Prestar contas</strong> financeira e técnica nos prazos, com cada dispêndio vinculado às etapas.</li>
+          <li><strong>Permitir fiscalização</strong> da FAPEMIG — visita técnica, auditoria documental, in loco.</li>
+          <li><strong>Proteger o conhecimento gerado</strong> via segredo industrial e NDAs.</li>
+          <li><strong>Mencionar o apoio</strong> FAPEMIG · Compete Minas em toda comunicação dos resultados.</li>
+          <li><strong>Garantir TRL final 9</strong> para chips e creme ao término dos 12 meses.</li>
+        </ol>
+      </div>
+      <div class="dever org">
+        <div class="who">Outorgante</div>
+        <h4>FAPEMIG</h4>
+        <ol>
+          <li><strong>Desembolsar R$ 199.880</strong> conforme cronograma físico-financeiro da outorga.</li>
+          <li><strong>Aprovar ou glosar</strong> dispêndios fora do escopo ou sem justificativa adequada.</li>
+          <li><strong>Fiscalizar a execução</strong> técnica e financeira em qualquer fase.</li>
+          <li><strong>Exigir devolução</strong> de valores em caso de inexecução ou desvio de finalidade.</li>
+          <li><strong>Suspender ou rescindir</strong> a outorga por descumprimento (item 13.1.2 da Chamada).</li>
+          <li><strong>Solicitar relatórios</strong> técnicos parciais e final em modelo FAPEMIG.</li>
+          <li><strong>Validar prestação de contas</strong> ao final do projeto antes da quitação.</li>
+          <li><strong>Manter sigilo</strong> sobre informações declaradas como segredo industrial.</li>
+          <li><strong>Disponibilizar suporte</strong> técnico pelo Departamento de Parcerias Empresariais.</li>
+          <li><strong>Convocar próxima proposta P2</strong> caso a Coco Rock seja desclassificada.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 EQUIPE -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">08</span>
+      <h2>Equipe executora</h2>
+      <span class="s-sub">Três pessoas · 100% Coco Rock</span>
+    </div>
+    <div class="team">
+      <div class="person">
+        <div class="ava">P</div>
+        <div class="role">Coordenador</div>
+        <h4>Pedro Pinheiro Antunes</h4>
+        <p>Responsabilidade técnica e estratégica. Supervisão geral, integração das equipes, definição de diretrizes de P&amp;D, validação final dos protótipos e planejamento de escalabilidade.</p>
+      </div>
+      <div class="person g">
+        <div class="ava">D</div>
+        <div class="role">Colaborador técnico</div>
+        <h4>Douglas</h4>
+        <p>Execução prática de P&amp;D — análises físico-químicas, sensoriais e reológicas; ajustes de formulação; testes de shelf life; validação técnica dos protótipos.</p>
+      </div>
+      <div class="person b">
+        <div class="ava">E</div>
+        <div class="role">Apoio operacional</div>
+        <h4>Eduardo H. A. Araújo</h4>
+        <p>Preparação de amostras, prototipagem, operação de máquinas durante ensaios, execução de lotes-piloto e aplicação dos POPs em escala reduzida.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 INFRA -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">09</span>
+      <h2>Infraestrutura</h2>
+      <span class="s-sub">Bens próprios &amp; bens a adquirir</span>
+    </div>
+    <div class="cols-2">
+      <div class="card tone">
+        <div class="block-title green">Estrutura existente</div>
+        <dl class="def">
+          <div><dt>Forno proprietário</dt><dd>desidratação Coco Rock</dd></div>
+          <div><dt>Seladora de bancada</dt><dd>—</dd></div>
+          <div><dt>Freezers</dt><dd>—</dd></div>
+          <div><dt>Câmara fria</dt><dd>—</dd></div>
+          <div><dt>Descascadora / filetadora</dt><dd>coco seco</dd></div>
+          <div><dt>Bancadas de resfriamento</dt><dd>—</dd></div>
+          <div><dt>Utilidades</dt><dd>energia + água industrial</dd></div>
+        </dl>
+      </div>
+      <div class="card tone">
+        <div class="block-title orange">A adquirir com a outorga</div>
+        <dl class="def">
+          <div><dt>Medidor atividade de água</dt><dd>bancada</dd></div>
+          <div><dt>Balanças de precisão</dt><dd>laboratoriais</dd></div>
+          <div><dt>Termohigrômetros</dt><dd>controle ambiental</dd></div>
+          <div><dt>Sensores + automação</dt><dd>controle térmico</dd></div>
+          <div><dt>Embalagens piloto</dt><dd>barreira umidade/O₂</dd></div>
+          <div><dt>Reforma laboratorial</dt><dd>R$ 16 k · adequação</dd></div>
+          <div><dt>Isolamento térmico</dt><dd>R$ 30 k · áreas críticas</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 RISCOS -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">10</span>
+      <h2>Riscos &amp; pontos de atenção</h2>
+      <span class="s-sub">O que monitorar até a assinatura</span>
+    </div>
+    <div class="risks">
+      <div class="risk critico">
+        <div class="risk-tag">Crítico</div>
+        <div class="risk-body">
+          <h4>Outorga pendente de regularização</h4>
+          <p>O Ofício DPE 287/2025 (07/11/2025) abriu prazo de <strong>30 dias úteis</strong> para regularizar cadastro FAPEMIG + CAGEF, cadastrar usuário externo no SEI/MG, enviar Termo de Designação de Fiscal e — opcionalmente — aderir à assessoria SEBRAE. Sem isso, a proposta é desclassificada e a próxima P2 da categoria assume.</p>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="risk-tag">Financeiro</div>
+        <div class="risk-body">
+          <h4>Contrapartida não está no fluxo</h4>
+          <p>R$ 26.000 de contrapartida financeira (feira) precisa estar previsto no caixa Coco Rock — não vem da FAPEMIG. Decisão da reunião: quando aportar e qual evento alvo.</p>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="risk-tag">Orçamento</div>
+        <div class="risk-body">
+          <h4>Concentração em uma rubrica</h4>
+          <p>"Outros Serviços de Terceiros" concentra <strong>47%</strong> da verba (R$ 113.000 em 4 contratos distintos): equipe técnica R$ 50 k, consultoria R$ 32 k, feira R$ 26 k e utilidades R$ 5 k. Exige governança de contratos.</p>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="risk-tag">Propr. Intelectual</div>
+        <div class="risk-body">
+          <h4>Sem estratégia formal de PI</h4>
+          <p>Proteção declarada é exclusivamente segredo industrial + NDAs. Não há previsão para patente. Discutir registro INPI da marca ou se mantém só sigilo contratual.</p>
+        </div>
+      </div>
+      <div class="risk ok">
+        <div class="risk-tag">Positivo</div>
+        <div class="risk-body">
+          <h4>100% do solicitado foi aprovado</h4>
+          <p>Todos os R$ 240.880 solicitados foram integralmente aprovados — não houve glosa preliminar. Sinal forte de aderência técnica e orçamentária ao edital.</p>
+        </div>
+      </div>
+      <div class="risk ok">
+        <div class="risk-tag">Compliance</div>
+        <div class="risk-body">
+          <h4>Vinculação técnica robusta</h4>
+          <p>Cada dispêndio está amarrado a etapas específicas do plano — facilita prestação de contas e reduz risco de glosa em auditoria FAPEMIG.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 DECISÕES -->
+  <section>
+    <div class="s-head">
+      <div class="s-mark"><svg viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg></div>
+      <span class="s-num">11</span>
+      <h2>Decisões para a reunião</h2>
+      <span class="s-sub">Seis pontos a fechar</span>
+    </div>
+    <div class="decisions">
+      <div class="dec">
+        <div class="dec-num">i</div>
+        <h4>Acionar a regularização hoje</h4>
+        <p>Pedro cadastra-se como usuário externo SEI/MG, atualiza CAGEF e designa Fiscal (Anexo X). Risco de desclassificação no prazo de 30 dias úteis.</p>
+      </div>
+      <div class="dec">
+        <div class="dec-num">ii</div>
+        <h4>Decidir adesão SEBRAE</h4>
+        <p>Como ME/EPP (Categoria A), Coco Rock pode aderir à assessoria SEBRAE via Anexo XIII. Avaliar custo/benefício antes do prazo.</p>
+      </div>
+      <div class="dec">
+        <div class="dec-num">iii</div>
+        <h4>Bloquear contrapartida no caixa</h4>
+        <p>R$ 26 k financeira + R$ 15 k econômica precisam estar previstos no fluxo 2026. Definir qual feira absorve os R$ 26 k.</p>
+      </div>
+      <div class="dec">
+        <div class="dec-num">iv</div>
+        <h4>Confirmar laboratórios parceiros</h4>
+        <p>R$ 24 k em 16 ensaios físico-químicos + R$ 18 k em certificações dependem de laboratórios credenciados — fechar nomes antes do mês 1.</p>
+      </div>
+      <div class="dec">
+        <div class="dec-num">v</div>
+        <h4>Definir feira-alvo (Etapa 3.2)</h4>
+        <p>Os R$ 26 k de contrapartida vinculam-se à validação sensorial em feira nacional — Naturaltech? FiSA? APAS? Decidir até início de 2026.</p>
+      </div>
+      <div class="dec">
+        <div class="dec-num">vi</div>
+        <h4>Governança das consultorias</h4>
+        <p>Quatro módulos × R$ 8 k = R$ 32 k em consultoria técnica. Selecionar especialistas em emulsões naturais e shelf life de snacks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <svg class="raio" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1347.89 1712.66"><path d="M802.3,1365.69l13.63.04c6.1,5.68-18.53,28.11-13.63-.04M1296.53,951.07l11.95-11.12-243.69-801.6c-109.4-23.15-229.33-17.18-335.59-52.26-39.84,9.73-66.81-31.36-100.64-21.04-12.9,3.93-19.01,13.98-35,15.34-19.5,1.66-107.03-18.14-116.15-9.63l228.82,633.92L27.48,895.36l-7.18,14.23,1068.17,803.07-238.84-636.45,446.9-125.13ZM1281.65,1285.97c4.64,25.07,37.58,18.35,43.94,7.26,14.7-25.66-51.61-48.69-43.94-7.26M1235.54,1389.97c-9.23,8.1-3.15,46.97,22.55,29.48,18.16-12.36-7.64-42.57-22.55-29.48M423.84,1357.57c-14.19,32.15,1.57,40.77,31.51,29.5l-.19-21.5-31.32-7.99ZM1322.62,4.29l4.39,18.76,18.66-.16,2.21-22.88-25.27,4.29ZM2.27,1399.94c-9.9,13.88,15.12,29.29,24.76,22.58,18.68-13.01-10.96-41.91-24.76-22.58M1251.75,4.77c-7.05-10.25-39.74-2.71-29.4,17.67,11.87,23.41,38.81-4,29.4-17.67M488.56,648.39c24.86-24.72-10.6-70.04-42.54-45.02-28.37,22.21,13.71,73.68,42.54,45.02M471.22,717.77l22.78.05c2.9-14.22-5.66-16.46-15.91-22.69l-6.88,22.63ZM409.04,50.02c-1.03-27.09-28.05-18.34-22.73,6.81l22.73-6.81Z"/></svg>
+    <div class="fl">
+      <div class="big">Coco Rock · Compete Minas</div>
+      <div class="sm">Dashboard analítico do Termo de Outorga · APQ-06390-25</div>
+    </div>
+    <div class="fr">
+      Documento interno de trabalho · gerado em 19/05/2026<br>
+      Fonte: Plano de Trabalho FAPEMIG + Ofício DPE 287/2025
+    </div>
+  </footer>
+</div>
+</body>
+</html>
